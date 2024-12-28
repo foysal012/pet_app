@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-
+import '../../details_page/view/details_page.dart';
 import '../controller/home_page_controller.dart';
 import '../model/pet_model.dart';
 
@@ -25,13 +25,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Container(
-          height: 40,
-          width: 40,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.pink
-          ),
+        leading: CircleAvatar(
+          radius: 10,
+          backgroundColor: Colors.pink,
         ),
         title: const Text("Hi, Foysal"),
       ),
@@ -89,45 +85,48 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index) {
                       // final dataInfo = PetModel.dogDataList[index];
                       final dataInfo = controller.petValue == 0 ? PetModel.dogDataList[index] : controller.petValue == 1 ? PetModel.catDataList[index] : controller.petValue == 2 ? PetModel.snakeDataList[index]: PetModel.birdDataList[index];
-                      return Container(
-                        height: 200,
-                        margin: const EdgeInsets.only(bottom: 8.0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                height: 180,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: Colors.grey,
-                                ),
-                                child: Image.asset('${dataInfo.petImage}'),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                height: 110,
-                                padding: const EdgeInsets.only(left: 10.0),
-                                decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(20.0),
-                                    bottomRight: Radius.circular(20.0),
+                      return GestureDetector(
+                        onTap: () => Get.to(const DetailsPage(), arguments: dataInfo),
+                        child: Container(
+                          height: 200,
+                          margin: const EdgeInsets.only(bottom: 8.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 180,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    color: Colors.grey,
                                   ),
-                                  color: Colors.grey[300],
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('${dataInfo.petName}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
-                                    const Gap(5.0),
-                                    Text('${dataInfo.petColor}', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
-                                    Text('Dog, ${dataInfo.petAge} year old', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black45)),
-                                  ],
+                                  child: Image.asset('${dataInfo.petImage}'),
                                 ),
                               ),
-                            ),
-                          ],
+                              Expanded(
+                                child: Container(
+                                  height: 110,
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      topRight: Radius.circular(20.0),
+                                      bottomRight: Radius.circular(20.0),
+                                    ),
+                                    color: Colors.grey[300],
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text('${dataInfo.petName}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
+                                      const Gap(5.0),
+                                      Text('${dataInfo.petColor}', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
+                                      Text('Dog, ${dataInfo.petAge} year old', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black45)),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     }),
