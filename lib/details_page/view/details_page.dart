@@ -99,6 +99,8 @@ class _DetailsPageState extends State<DetailsPage> {
                         ),
                       ),
                       Positioned(
+                          top: 15,
+                          left: 5,
                           child: IconButton(
                               onPressed: (){
                                 Get.back();

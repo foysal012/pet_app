@@ -25,9 +25,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: CircleAvatar(
-          radius: 10,
-          backgroundColor: Colors.pink,
+        leading: Container(
+          height: 10,
+          width: 10,
+          margin: const EdgeInsets.all(08.0),
+          decoration: const BoxDecoration(
+          // color: Colors.pink,
+            image: DecorationImage(image: NetworkImage('https://pbs.twimg.com/media/GMGPVt_akAE7xUI?format=jpg&name=large')),
+            shape: BoxShape.circle
+          ),
         ),
         title: const Text("Hi, Foysal"),
       ),
