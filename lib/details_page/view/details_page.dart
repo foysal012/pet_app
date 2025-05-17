@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import '../../home_page/model/pet_model.dart';
@@ -14,6 +15,16 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
 
   final PetModel detailsData = Get.arguments;
+
+  List<Color> colorList = [
+    Colors.teal,
+    Colors.purple,
+    Colors.green,
+    Colors.amber,
+    Colors.pink
+  ];
+
+  Color? selectedColor;
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +63,29 @@ class _DetailsPageState extends State<DetailsPage> {
                                       height: 90,
                                       width: 90,
                                       decoration: BoxDecoration(
-                                        color: Colors.grey[400],
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        color: Colors.teal[200],
+                                        // borderRadius: BorderRadius.circular(10.0),
+                                          borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(50.0),
+                                              bottomLeft: Radius.circular(50.0)
+                                          )
                                       ),
                                       child: Column(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          Text('${detailsData.petAge}'),
-                                          const Text('Age'),
+                                          Text('${detailsData.petAge}',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold
+                                          ),
+                                          ),
+                                          Text('Age',
+                                            style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                              color: Colors.grey.shade200
+                                          ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -67,14 +93,29 @@ class _DetailsPageState extends State<DetailsPage> {
                                       height: 90,
                                       width: 90,
                                       decoration: BoxDecoration(
-                                        color: Colors.grey[400],
-                                        borderRadius: BorderRadius.circular(10.0),
+                                          color: Colors.teal[200],
+                                        // borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(50.0),
+                                          bottomRight: Radius.circular(50.0)
+                                        )
                                       ),
                                       child: Column(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          Text('${detailsData.petCategory}'),
-                                          const Text('Category'),
+                                          Text('${detailsData.petCategory}',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold
+                                          ),
+                                          ),
+                                          Text('Category',
+                                            style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                              color: Colors.grey.shade200
+                                          ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -82,14 +123,29 @@ class _DetailsPageState extends State<DetailsPage> {
                                       height: 90,
                                       width: 90,
                                       decoration: BoxDecoration(
-                                        color: Colors.grey[400],
-                                        borderRadius: BorderRadius.circular(10.0),
+                                          color: Colors.teal[200],
+                                        // borderRadius: BorderRadius.circular(10.0),
+                                          borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(50.0),
+                                              bottomLeft: Radius.circular(50.0)
+                                          )
                                       ),
                                       child: Column(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          Text('${detailsData.petOrigin}'),
-                                          const Text('Origin'),
+                                          Text('${detailsData.petOrigin}',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold
+                                          ),
+                                          ),
+                                          Text('Origin',
+                                            style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                              color: Colors.grey.shade200
+                                          ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -106,6 +162,16 @@ class _DetailsPageState extends State<DetailsPage> {
                                 Get.back();
                               },
                               icon: const Icon(Icons.arrow_back_ios_new_outlined, color: Colors.white,)
+                          )),
+
+                      Positioned(
+                          top: 15,
+                          right: 5,
+                          child: IconButton(
+                              onPressed: (){
+                                Get.back();
+                              },
+                              icon: const Icon(Icons.more_vert, color: Colors.white,)
                           ))
                     ],
                   ),
