@@ -16,14 +16,6 @@ class _DetailsPageState extends State<DetailsPage> {
 
   final PetModel detailsData = Get.arguments;
 
-  List<Color> colorList = [
-    Colors.teal,
-    Colors.purple,
-    Colors.green,
-    Colors.amber,
-    Colors.pink
-  ];
-
   Color? selectedColor;
 
   @override
@@ -53,7 +45,6 @@ class _DetailsPageState extends State<DetailsPage> {
                           image: DecorationImage(image: AssetImage('${detailsData.petImage}'),fit: BoxFit.fill),
                         ),
                         child: Column(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                                 Row(
@@ -63,9 +54,9 @@ class _DetailsPageState extends State<DetailsPage> {
                                       height: 90,
                                       width: 90,
                                       decoration: BoxDecoration(
-                                        color: Colors.teal[200],
+                                        color: selectedColor ?? Colors.teal[200],
                                         // borderRadius: BorderRadius.circular(10.0),
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                               topRight: Radius.circular(50.0),
                                               bottomLeft: Radius.circular(50.0)
                                           )
@@ -74,7 +65,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text('${detailsData.petAge}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold
                                           ),
@@ -93,9 +84,9 @@ class _DetailsPageState extends State<DetailsPage> {
                                       height: 90,
                                       width: 90,
                                       decoration: BoxDecoration(
-                                          color: Colors.teal[200],
+                                          color: selectedColor ?? Colors.teal[200],
                                         // borderRadius: BorderRadius.circular(10.0),
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           topLeft: Radius.circular(50.0),
                                           bottomRight: Radius.circular(50.0)
                                         )
@@ -104,7 +95,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text('${detailsData.petCategory}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold
                                           ),
@@ -123,9 +114,9 @@ class _DetailsPageState extends State<DetailsPage> {
                                       height: 90,
                                       width: 90,
                                       decoration: BoxDecoration(
-                                          color: Colors.teal[200],
+                                          color: selectedColor ?? Colors.teal[200],
                                         // borderRadius: BorderRadius.circular(10.0),
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                               topRight: Radius.circular(50.0),
                                               bottomLeft: Radius.circular(50.0)
                                           )
@@ -134,7 +125,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text('${detailsData.petOrigin}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold
                                           ),
@@ -167,12 +158,26 @@ class _DetailsPageState extends State<DetailsPage> {
                       Positioned(
                           top: 15,
                           right: 5,
-                          child: IconButton(
-                              onPressed: (){
-                                Get.back();
-                              },
-                              icon: const Icon(Icons.more_vert, color: Colors.white,)
-                          ))
+                        child: PopupMenuButton<Color>(
+                            icon: const Icon(Icons.more_vert, color: Colors.white,),
+                            initialValue: selectedColor,
+                            onSelected: (Color color) {
+                              setState(() {
+                                selectedColor = color;
+                              });
+                              debugPrint("${selectedColor?.value}");
+                            },
+                            itemBuilder:
+                                (BuildContext context) => <PopupMenuEntry<Color>>
+                            [
+                              const PopupMenuItem<Color>(value: Colors.teal, child: Text('Teal')),
+                              const PopupMenuItem<Color>(value: Colors.purple, child: Text('Purple')),
+                              const PopupMenuItem<Color>(value: Colors.green, child: Text('Green')),
+                              const PopupMenuItem<Color>(value: Colors.amber, child: Text('Amber')),
+                              const PopupMenuItem<Color>(value: Colors.pink, child: Text('Pink')),
+                            ]
+                        ),
+                      )
                     ],
                   ),
                   const Gap(20.0),
