@@ -55,7 +55,15 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontSize: 18, color: Colors.black38, fontWeight: FontWeight.bold),
                 ),
 
-                const Gap(10.0),
+                const Gap(5.0),
+
+                const Divider(
+                  height: 1.0,
+                  thickness: 1.0,
+                  color: Colors.cyan,
+                ),
+
+                const Gap(5.0),
 
                 SizedBox(
                   height: 100,
@@ -81,7 +89,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                const Gap(20.0),
+                const Gap(10.0),
+
+                const Divider(
+                  height: 1.0,
+                  thickness: 1.0,
+                  color: Colors.cyan,
+                ),
+
+                const Gap(10.0),
 
                 ListView.builder(
                     shrinkWrap: true,
@@ -109,26 +125,45 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Expanded(
-                                child: Container(
-                                  height: 110,
-                                  padding: const EdgeInsets.only(left: 10.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                      topRight: Radius.circular(20.0),
-                                      bottomRight: Radius.circular(20.0),
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      height: 110,
+                                      width: MediaQuery.sizeOf(context).width,
+                                      padding: const EdgeInsets.only(left: 10.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.only(
+                                          topRight: Radius.circular(20.0),
+                                          bottomRight: Radius.circular(20.0),
+                                        ),
+                                        color: Colors.grey[300],
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text('${dataInfo.petName}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
+                                          const Gap(5.0),
+                                          Text('${dataInfo.petColor}', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
+                                          Text('Dog, ${dataInfo.petAge} year old', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black45)),
+                                        ],
+                                      ),
                                     ),
-                                    color: Colors.grey[300],
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text('${dataInfo.petName}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
-                                      const Gap(5.0),
-                                      Text('${dataInfo.petColor}', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
-                                      Text('Dog, ${dataInfo.petAge} year old', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black45)),
-                                    ],
-                                  ),
+
+                                    Positioned(
+                                      right: 10.0,
+                                        child: Container(
+                                      height: 50,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                        color: Colors.cyan,
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(65.0),
+                                          bottomRight: Radius.circular(65.0),
+                                        )
+                                      ),
+                                    ))
+                                  ],
                                 ),
                               ),
                             ],
