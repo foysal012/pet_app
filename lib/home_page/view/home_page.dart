@@ -94,9 +94,8 @@ class _HomePageState extends State<HomePage> {
                 const Divider(
                   height: 1.0,
                   thickness: 1.0,
-                  color: Colors.cyan,
+                  color: Colors.cyan
                 ),
-
                 const Gap(10.0),
 
                 ListView.builder(
