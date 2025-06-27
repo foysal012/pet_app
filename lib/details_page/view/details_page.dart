@@ -149,7 +149,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           top: 15,
                           left: 5,
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.grey,
                               shape: BoxShape.circle
                             ),
@@ -165,7 +165,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           top: 15,
                           right: 5,
                         child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.grey,
                               shape: BoxShape.circle
                           ),
